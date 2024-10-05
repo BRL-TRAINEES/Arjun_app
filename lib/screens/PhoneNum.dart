@@ -15,12 +15,13 @@ class _PhonenumState extends State<Phonenum> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Textinput("enter email"),
+          const Textinput("enter mobile No."),
           ElevatedButton(
             onPressed: () {},
             child: const Text(
               "OK",
-              style: TextStyle(color: Colors.white, fontSize: 16),
+              style: TextStyle(
+                  color: Color.fromARGB(255, 20, 19, 19), fontSize: 16),
             ),
           ),
         ],

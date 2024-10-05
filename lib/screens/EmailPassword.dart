@@ -37,7 +37,8 @@ class _EmailSignUpState extends State<EmailSignUp> {
             onPressed: () {},
             child: const Text(
               "Sign Up",
-              style: TextStyle(color: Colors.white, fontSize: 16),
+              style: TextStyle(
+                  color: Color.fromARGB(255, 15, 15, 15), fontSize: 16),
             ),
           ),
         ],

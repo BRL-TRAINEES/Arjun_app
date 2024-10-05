@@ -1,14 +1,14 @@
 import 'package:arjun_app/widget/textinput.dart';
 import 'package:flutter/material.dart';
 
-class EmailSignUp extends StatefulWidget {
-  const EmailSignUp({super.key});
+class EmailSignIn extends StatefulWidget {
+  const EmailSignIn({super.key});
 
   @override
-  State<EmailSignUp> createState() => _EmailSignUpState();
+  State<EmailSignIn> createState() => _EmailSignInState();
 }
 
-class _EmailSignUpState extends State<EmailSignUp> {
+class _EmailSignInState extends State<EmailSignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +37,8 @@ class _EmailSignUpState extends State<EmailSignUp> {
             onPressed: () {},
             child: const Text(
               "Sign In",
-              style: TextStyle(color: Colors.white, fontSize: 16),
+              style: TextStyle(
+                  color: Color.fromARGB(255, 10, 10, 10), fontSize: 16),
             ),
           ),
         ],
