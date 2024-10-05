@@ -15,7 +15,7 @@ class _LogInScreenState extends State<LogInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("sign up / login Options "),
+        title: const Text("sign up / login Options "),
       ),
       body: SafeArea(
           child: Center(

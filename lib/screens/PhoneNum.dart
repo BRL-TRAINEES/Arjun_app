@@ -1,4 +1,6 @@
+import 'package:arjun_app/screens/otpauth.dart';
 import 'package:arjun_app/widget/textinput.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Phonenum extends StatefulWidget {
@@ -17,9 +19,25 @@ class _PhonenumState extends State<Phonenum> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Textinput(
-              controller: phoneController, hintText: 'Enter phone number'),
+            controller: phoneController,
+            hintText: 'Enter phone number',
+          ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () async {
+              await FirebaseAuth.instance.verifyPhoneNumber(
+                  verificationCompleted: (PhoneAuthCredential credential) {},
+                  verificationFailed: (FirebaseAuthException ex) {},
+                  codeSent: (String verificationId, int? resendtoken) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Otpauth(
+                                  verificationId: verificationId,
+                                )));
+                  },
+                  codeAutoRetrievalTimeout: (String verificationId) {},
+                  phoneNumber: phoneController.text.toString());
+            },
             child: const Text(
               "OK",
               style: TextStyle(
