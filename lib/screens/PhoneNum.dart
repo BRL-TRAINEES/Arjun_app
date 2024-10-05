@@ -9,13 +9,15 @@ class Phonenum extends StatefulWidget {
 }
 
 class _PhonenumState extends State<Phonenum> {
+  final TextEditingController phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Textinput("enter mobile No."),
+          Textinput(
+              controller: phoneController, hintText: 'Enter phone number'),
           ElevatedButton(
             onPressed: () {},
             child: const Text(

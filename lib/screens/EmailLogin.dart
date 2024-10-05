@@ -9,6 +9,8 @@ class EmailSignIn extends StatefulWidget {
 }
 
 class _EmailSignInState extends State<EmailSignIn> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,12 +27,14 @@ class _EmailSignInState extends State<EmailSignIn> {
           const SizedBox(height: 20),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: Textinput("enter email"),
+            child: Textinput(
+                controller: emailController, hintText: 'Enter Email Address'),
           ),
           const SizedBox(height: 20),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: Textinput("enter password"),
+            child: Textinput(
+                controller: passController, hintText: 'Enter Password'),
           ),
           const SizedBox(height: 20),
           ElevatedButton(

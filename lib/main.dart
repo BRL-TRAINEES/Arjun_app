@@ -11,12 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'flutter firebase auth',
       theme: ThemeData(
         primarySwatch: Colors.cyan,
       ),
       home: const LogInScreen(),
-      routes: const {},
     );
   }
 }
