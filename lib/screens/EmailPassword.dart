@@ -1,4 +1,5 @@
 import 'package:arjun_app/widget/textinput.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class EmailSignUp extends StatefulWidget {
@@ -11,6 +12,11 @@ class EmailSignUp extends StatefulWidget {
 class _EmailSignUpState extends State<EmailSignUp> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
+
+  signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text, password: passController.text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +45,7 @@ class _EmailSignUpState extends State<EmailSignUp> {
           ),
           const SizedBox(height: 20),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: (() => signIn()),
             child: const Text(
               "Sign Up",
               style: TextStyle(
