@@ -2,9 +2,16 @@ import 'package:arjun_app/screens/wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() async {
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: 'AIzaSyAr6sCUoJu-77CKj1ylHVE203Y57fydQ4Q', // Your apiKey
+      appId: '1:291583480134:android:2360924d1a1289ac841547', // Your appId
+      messagingSenderId: '291583480134', // Your messagingSenderId
+      projectId: 'fir-auth-83b00', // Your projectId
+    ),
+  );
   runApp(const MyApp());
 }
 

@@ -1,5 +1,4 @@
 import 'package:arjun_app/screens/otpauth.dart';
-import 'package:arjun_app/widget/textinput.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -18,16 +17,32 @@ class _PhonenumState extends State<Phonenum> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Textinput(
+          TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide:
+                    const BorderSide(color: Colors.transparent, width: 0),
+              ),
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+              filled: true,
+              fillColor: const Color.fromARGB(255, 223, 225, 233),
+              hintText: "Enter Mobile No.",
+              hintStyle: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
             controller: phoneController,
-            hintText: 'Enter phone number',
+            keyboardType: TextInputType.number,
           ),
           ElevatedButton(
             onPressed: () async {
               await FirebaseAuth.instance.verifyPhoneNumber(
                   verificationCompleted: (PhoneAuthCredential credential) {},
                   verificationFailed: (FirebaseAuthException ex) {},
-                  codeSent: (String verificationId,int? resendtoken) {
+                  codeSent: (String verificationId, int? resendtoken) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
