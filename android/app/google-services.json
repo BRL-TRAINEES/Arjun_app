@@ -5,6 +5,7 @@
     "storage_bucket": "fir-auth-83b00.appspot.com"
   },
   "client": [
+    
     {
       "client_info": {
         "mobilesdk_app_id": "1:291583480134:android:9f70d7535676dcd6841547",
@@ -12,7 +13,12 @@
           "package_name": "com.example.arjun_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "291583480134-8m4shise9msounijm3l0jttbdb1elkp1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAr6sCUoJu-77CKj1ylHVE203Y57fydQ4Q"
@@ -20,7 +26,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "291583480134-8m4shise9msounijm3l0jttbdb1elkp1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "291583480134-8ucdq6e5g5ac8oklnnr98oci31e5tj1q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.arjunApp"
+              }
+            }
+          ]
         }
       }
     }

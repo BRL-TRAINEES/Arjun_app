@@ -2,8 +2,10 @@ import 'package:arjun_app/screens/EmailLogin.dart';
 import 'package:arjun_app/screens/EmailPassword.dart';
 import 'package:arjun_app/screens/PhoneNum.dart';
 import 'package:arjun_app/screens/forgot.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});
@@ -13,6 +15,17 @@ class LogInScreen extends StatefulWidget {
 }
 
 class _LogInScreenState extends State<LogInScreen> {
+  login() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+    await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +61,10 @@ class _LogInScreenState extends State<LogInScreen> {
             ElevatedButton(
               onPressed: (() => Get.to(forgot())),
               child: const Text("Forgot Password"),
+            ),
+            ElevatedButton(
+              onPressed: (() => login()),
+              child: const Text("Sign In With Google"),
             ),
           ],
         ),
