@@ -1,9 +1,8 @@
-import 'dart:math';
-
-import 'package:arjun_app/screens/homescreen.dart';
+import 'package:arjun_app/screens/wrapper.dart';
 import 'package:arjun_app/widget/textinput.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Otpauth extends StatefulWidget {
   final String verificationId;
@@ -16,6 +15,25 @@ class Otpauth extends StatefulWidget {
 class _PhonenumState extends State<Otpauth> {
   final TextEditingController OTPController = TextEditingController();
 
+  signIn() async {
+    PhoneAuthCredential credential = PhoneAuthProvider.credential(
+      verificationId: widget.verificationId,
+      smsCode: OTPController.text,
+    );
+
+    try {
+      await FirebaseAuth.instance
+          .signInWithCredential(credential)
+          .then((value) => {
+                Get.offAll(Wrapper()),
+              });
+    } on FirebaseAuthException catch (e) {
+      Get.snackbar('Error', e.code);
+    } catch (e) {
+      Get.snackbar('Error', e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,29 +43,26 @@ class _PhonenumState extends State<Otpauth> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Center(
+            child: Text(
+              'OTP Verification',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
           Textinput(
             controller: OTPController,
-            hintText: 'Enter OTP',
+            hintText: 'Enter OTP sent',
+          ),
+          SizedBox(
+            height: 30,
           ),
           ElevatedButton(
-            onPressed: () async {
-              try {
-                PhoneAuthCredential credential = PhoneAuthProvider.credential(
-                  verificationId: widget.verificationId,
-                  smsCode: OTPController.text.toString(),
-                );
-                FirebaseAuth.instance
-                    .signInWithCredential(credential)
-                    .then((onValue) {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Homescreen()));
-                });
-              } catch (ex) {
-                log(ex.toString() as num);
-              }
-            },
+            onPressed: (() => signIn()),
             child: const Text(
-              "OK",
+              "Verify",
               style: TextStyle(
                   color: Color.fromARGB(255, 20, 19, 19), fontSize: 16),
             ),

@@ -62,6 +62,9 @@ class _LogInScreenState extends State<LogInScreen> {
               onPressed: (() => Get.to(forgot())),
               child: const Text("Forgot Password"),
             ),
+            SizedBox(
+              height: 35,
+            ),
             ElevatedButton(
               onPressed: (() => login()),
               child: const Text("Sign In With Google"),

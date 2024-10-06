@@ -23,7 +23,8 @@ class _HomescreenState extends State<Homescreen> {
       ),
       body: Center(
           child: Text(
-        '${user!.email}',
+        'Welcome to Homescreen!!!',
+        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
       )),
       floatingActionButton: FloatingActionButton(
         onPressed: (() => signout()),
