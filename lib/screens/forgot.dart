@@ -1,29 +1,28 @@
-import 'package:arjun_app/screens/wrapper.dart';
 import 'package:arjun_app/widget/textinput.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class EmailSignUp extends StatefulWidget {
-  const EmailSignUp({super.key});
+class forgot extends StatefulWidget {
+  const forgot({super.key});
 
   @override
-  State<EmailSignUp> createState() => _EmailSignUpState();
+  State<forgot> createState() => _forgotState();
 }
 
-class _EmailSignUpState extends State<EmailSignUp> {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passController = TextEditingController();
+class _forgotState extends State<forgot> {
+  TextEditingController emailController = TextEditingController();
 
-  signUp() async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text, password: passController.text);
-    Get.offAll(Wrapper());
+  reset() async {
+    await FirebaseAuth.instance
+        .sendPasswordResetEmail(email: emailController.text);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Forgot Password"),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -41,16 +40,10 @@ class _EmailSignUpState extends State<EmailSignUp> {
                 controller: emailController, hintText: 'Enter Email Address'),
           ),
           const SizedBox(height: 20),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: Textinput(
-                controller: passController, hintText: 'Enter Password'),
-          ),
-          const SizedBox(height: 20),
           ElevatedButton(
-            onPressed: (() => signUp()),
+            onPressed: (() => reset()),
             child: const Text(
-              "Sign Up",
+              "Send reset link",
               style: TextStyle(
                   color: Color.fromARGB(255, 15, 15, 15), fontSize: 16),
             ),
