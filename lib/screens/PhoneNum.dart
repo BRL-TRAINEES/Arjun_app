@@ -16,7 +16,7 @@ class _PhonenumState extends State<Phonenum> {
   sendotp() async {
     try {
       await FirebaseAuth.instance.verifyPhoneNumber(
-          phoneNumber: '+91' + phoneController.text,
+          phoneNumber: '+91${phoneController.text}',
           verificationCompleted: (PhoneAuthCredential credential) {},
           verificationFailed: (FirebaseAuthException e) {
             Get.snackbar("Error", e.code);
