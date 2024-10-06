@@ -25,6 +25,7 @@ class _VerificationState extends State<Verification> {
             'check your mail',
             margin: EdgeInsets.all(35),
             backgroundColor: Colors.yellow,
+            snackPosition: SnackPosition.BOTTOM,
           )
         });
   }
@@ -41,10 +42,15 @@ class _VerificationState extends State<Verification> {
       appBar: AppBar(
         title: Text("Id Verification"),
       ),
-      body: Padding(
+      body: const Padding(
         padding: EdgeInsets.all(32),
-        child: Text(
-            "click on the link sent in mail to get verified & then click reload button below"),
+        child: Center(
+          child: Text(
+            "click on the link sent in mail to get verified & then click reload button below",
+            style: TextStyle(
+                fontSize: 30, fontWeight: FontWeight.bold, color: Colors.amber),
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (() => reload()),

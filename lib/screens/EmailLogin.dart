@@ -15,48 +15,67 @@ class _EmailSignInState extends State<EmailSignIn> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
 
+  bool isloading = false;
+
   signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text, password: passController.text);
-    Get.offAll(Wrapper());
+    setState(() {
+      isloading = true;
+    });
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text, password: passController.text);
+      Get.offAll(Wrapper());
+    } on FirebaseAuthException catch (e) {
+      Get.snackbar("error", e.code, backgroundColor: Colors.amber);
+    } catch (e) {
+      Get.snackbar("error", e.toString(), backgroundColor: Colors.amber);
+    }
+    setState(() {
+      isloading = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            "Sign In",
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.black,
+    return isloading
+        ? Center(
+            child: CircularProgressIndicator(),
+          )
+        : Scaffold(
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Sign In",
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Textinput(
+                      controller: emailController,
+                      hintText: 'Enter Email Address'),
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Textinput(
+                      controller: passController, hintText: 'Enter Password'),
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: (() => signIn()),
+                  child: const Text(
+                    "Sign In",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 10, 10, 10), fontSize: 16),
+                  ),
+                ),
+              ],
             ),
-          ),
-          const SizedBox(height: 20),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: Textinput(
-                controller: emailController, hintText: 'Enter Email Address'),
-          ),
-          const SizedBox(height: 20),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: Textinput(
-                controller: passController, hintText: 'Enter Password'),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: (() => signIn()),
-            child: const Text(
-              "Sign In",
-              style: TextStyle(
-                  color: Color.fromARGB(255, 10, 10, 10), fontSize: 16),
-            ),
-          ),
-        ],
-      ),
-    );
+          );
   }
 }

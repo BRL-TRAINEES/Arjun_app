@@ -14,11 +14,24 @@ class EmailSignUp extends StatefulWidget {
 class _EmailSignUpState extends State<EmailSignUp> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
+  bool isloading = false;
 
   signUp() async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text, password: passController.text);
-    Get.offAll(Wrapper());
+    setState(() {
+      isloading = true;
+    });
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text, password: passController.text);
+      Get.offAll(Wrapper());
+    } on FirebaseAuthException catch (e) {
+      Get.snackbar("error", e.code, backgroundColor: Colors.amber);
+    } catch (e) {
+      Get.snackbar("error", e.toString(), backgroundColor: Colors.amber);
+    }
+    setState(() {
+      isloading = false;
+    });
   }
 
   @override
