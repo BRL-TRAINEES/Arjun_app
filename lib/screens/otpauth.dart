@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Otpauth extends StatefulWidget {
-  String verificationId;
+  final String verificationId;
   Otpauth({super.key, required this.verificationId});
 
   @override
@@ -32,10 +32,10 @@ class _PhonenumState extends State<Otpauth> {
           ElevatedButton(
             onPressed: () async {
               try {
-                PhoneAuthCredential credential =
-                    await PhoneAuthProvider.credential(
-                        verificationId: widget.verificationId,
-                        smsCode: OTPController.text.toString());
+                PhoneAuthCredential credential = PhoneAuthProvider.credential(
+                  verificationId: widget.verificationId,
+                  smsCode: OTPController.text.toString(),
+                );
                 FirebaseAuth.instance
                     .signInWithCredential(credential)
                     .then((onValue) {

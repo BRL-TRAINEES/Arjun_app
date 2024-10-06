@@ -1,7 +1,10 @@
+import 'package:arjun_app/screens/wrapper.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import './screens/loginScreen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -14,9 +17,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'flutter firebase auth',
       theme: ThemeData(
-        primarySwatch: Colors.cyan,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
-      home: const LogInScreen(),
+      home: const Wrapper(),
     );
   }
 }

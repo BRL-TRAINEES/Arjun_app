@@ -27,7 +27,7 @@ class _LogInScreenState extends State<LogInScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const EmailSignUp(),
+                    builder: (context) => EmailSignUp(),
                   ),
                 );
               },
@@ -41,7 +41,7 @@ class _LogInScreenState extends State<LogInScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const EmailSignIn(),
+                    builder: (context) => EmailSignIn(),
                   ),
                 );
               },
@@ -55,7 +55,7 @@ class _LogInScreenState extends State<LogInScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const Phonenum(),
+                    builder: (context) => Phonenum(),
                   ),
                 );
               },

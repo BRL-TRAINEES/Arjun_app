@@ -27,19 +27,21 @@ class _PhonenumState extends State<Phonenum> {
               await FirebaseAuth.instance.verifyPhoneNumber(
                   verificationCompleted: (PhoneAuthCredential credential) {},
                   verificationFailed: (FirebaseAuthException ex) {},
-                  codeSent: (String verificationId, int? resendtoken) {
+                  codeSent: (String verificationId,int? resendtoken) {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Otpauth(
-                                  verificationId: verificationId,
-                                )));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Otpauth(
+                          verificationId: verificationId,
+                        ),
+                      ),
+                    );
                   },
                   codeAutoRetrievalTimeout: (String verificationId) {},
                   phoneNumber: phoneController.text.toString());
             },
             child: const Text(
-              "OK",
+              "Send OTP",
               style: TextStyle(
                   color: Color.fromARGB(255, 20, 19, 19), fontSize: 16),
             ),

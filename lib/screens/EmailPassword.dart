@@ -1,4 +1,5 @@
 import 'package:arjun_app/widget/textinput.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class EmailSignUp extends StatefulWidget {
@@ -11,6 +12,7 @@ class EmailSignUp extends StatefulWidget {
 class _EmailSignUpState extends State<EmailSignUp> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
