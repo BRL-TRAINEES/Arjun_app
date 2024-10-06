@@ -1,6 +1,8 @@
+import 'package:arjun_app/screens/wrapper.dart';
 import 'package:arjun_app/widget/textinput.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class EmailSignIn extends StatefulWidget {
   const EmailSignIn({super.key});
@@ -16,6 +18,7 @@ class _EmailSignInState extends State<EmailSignIn> {
   signIn() async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text, password: passController.text);
+    Get.offAll(Wrapper());
   }
 
   @override
