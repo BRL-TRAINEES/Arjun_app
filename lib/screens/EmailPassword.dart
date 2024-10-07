@@ -36,52 +36,57 @@ class _EmailSignUpState extends State<EmailSignUp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            "Sign Up",
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.black,
-            ),
-          ),
-          const SizedBox(height: 20),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: Textinput(
-                controller: emailController, hintText: 'Enter Email Address'),
-          ),
-          const SizedBox(height: 20),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: Textinput(
-                controller: passController, hintText: 'Enter Password'),
-          ),
-          const Padding(
-            padding: EdgeInsets.all(32),
-            child: Center(
-              child: Text(
-                "--password must contain atleast one Uppercase,Lowercase,Number,Special Character amd minimum length of 8 ",
-                style: TextStyle(
+    return isloading
+        ? Center(
+            child: CircularProgressIndicator(),
+          )
+        : Scaffold(
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Sign Up",
+                  style: TextStyle(
                     fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.amber),
-              ),
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Textinput(
+                      controller: emailController,
+                      hintText: 'Enter Email Address'),
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Textinput(
+                      controller: passController, hintText: 'Enter Password'),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(32),
+                  child: Center(
+                    child: Text(
+                      "--password must contain atleast one Uppercase,Lowercase,Number,Special Character amd minimum length of 8 ",
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.amber),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: (() => signUp()),
+                  child: const Text(
+                    "Sign Up",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 15, 15, 15), fontSize: 16),
+                  ),
+                ),
+              ],
             ),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: (() => signUp()),
-            child: const Text(
-              "Sign Up",
-              style: TextStyle(
-                  color: Color.fromARGB(255, 15, 15, 15), fontSize: 16),
-            ),
-          ),
-        ],
-      ),
-    );
+          );
   }
 }
