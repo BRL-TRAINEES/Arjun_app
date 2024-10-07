@@ -48,7 +48,7 @@ class _VerificationState extends State<Verification> {
           child: Text(
             "click on the link sent in mail to get verified & then click reload button below",
             style: TextStyle(
-                fontSize: 30, fontWeight: FontWeight.bold, color: Colors.amber),
+                fontSize: 27, fontWeight: FontWeight.bold, color: Colors.amber),
           ),
         ),
       ),
