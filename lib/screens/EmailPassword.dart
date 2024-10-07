@@ -59,6 +59,18 @@ class _EmailSignUpState extends State<EmailSignUp> {
             child: Textinput(
                 controller: passController, hintText: 'Enter Password'),
           ),
+          const Padding(
+            padding: EdgeInsets.all(32),
+            child: Center(
+              child: Text(
+                "--password must contain atleast one Uppercase,Lowercase,Number,Special Character amd minimum length of 8 ",
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.amber),
+              ),
+            ),
+          ),
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: (() => signUp()),
