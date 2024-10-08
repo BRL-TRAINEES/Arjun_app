@@ -66,6 +66,7 @@ class _EmailSignInState extends State<EmailSignIn> {
                     controller: passController,
                     hintText: 'Enter Password',
                     isPassword: true,
+                    isnew: false,
                   ),
                 ),
                 const SizedBox(height: 20),

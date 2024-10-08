@@ -1,5 +1,4 @@
 import 'package:arjun_app/screens/wrapper.dart';
-import 'package:arjun_app/widget/passcheck.dart';
 import 'package:arjun_app/widget/textinput.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

@@ -5,12 +5,14 @@ class TextInput extends StatefulWidget {
   final String hintText;
   final TextEditingController controller;
   final bool isPassword;
+  final bool isnew;
 
   const TextInput({
     super.key,
     required this.hintText,
     required this.controller,
     this.isPassword = false,
+    this.isnew = true,
   });
 
   @override
@@ -70,7 +72,7 @@ class _TextInputState extends State<TextInput> {
                 const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
           ),
         ),
-        if (widget.isPassword)
+        if (widget.isPassword && widget.isnew)
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: Text(
