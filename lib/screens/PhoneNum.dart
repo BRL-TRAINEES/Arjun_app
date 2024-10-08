@@ -1,5 +1,4 @@
 import 'package:arjun_app/screens/otpauth.dart';
-import 'package:arjun_app/widget/textinput.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,10 +15,10 @@ class _PhonenumState extends State<Phonenum> {
   sendotp() async {
     try {
       await FirebaseAuth.instance.verifyPhoneNumber(
-          phoneNumber: '+91${phoneController.text}',
+          phoneNumber: '+91' + phoneController.text,
           verificationCompleted: (PhoneAuthCredential credential) {},
           verificationFailed: (FirebaseAuthException e) {
-            Get.snackbar("Error", e.code);
+            Get.snackbar("Error Occured", e.code);
           },
           codeSent: (String vi, int? token) {
             Get.to(
@@ -43,9 +42,29 @@ class _PhonenumState extends State<Phonenum> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: TextInput(
-                controller: phoneController, hintText: 'enter Mobile No.'),
+            margin: EdgeInsets.symmetric(horizontal: 20.0),
+            child: TextField(
+              keyboardType: TextInputType.phone,
+              controller: phoneController,
+              decoration: InputDecoration(
+                labelText: 'Phone Number',
+                hintText: '7505XXXXXX',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.grey),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                ),
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+              ),
+            ),
           ),
           SizedBox(
             height: 30,

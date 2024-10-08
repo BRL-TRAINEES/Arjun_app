@@ -6,13 +6,13 @@ import 'package:get/get.dart';
 
 class Otpauth extends StatefulWidget {
   final String verificationId;
-  Otpauth({super.key, required this.verificationId});
+  const Otpauth({super.key, required this.verificationId});
 
   @override
-  State<Otpauth> createState() => _PhonenumState();
+  State<Otpauth> createState() => _OtpauthState();
 }
 
-class _PhonenumState extends State<Otpauth> {
+class _OtpauthState extends State<Otpauth> {
   final TextEditingController OTPController = TextEditingController();
 
   signIn() async {

@@ -27,7 +27,7 @@ class _forgotState extends State<forgot> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            "Sign Up",
+            "Forgot Password",
             style: TextStyle(
               fontSize: 30,
               color: Colors.black,
