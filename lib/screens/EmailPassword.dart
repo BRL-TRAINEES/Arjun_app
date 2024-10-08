@@ -36,12 +36,12 @@ class _EmailSignUpState extends State<EmailSignUp> {
 
   @override
   Widget build(BuildContext context) {
-    return isloading
-        ? Center(
-            child: CircularProgressIndicator(),
-          )
-        : Scaffold(
-            body: Column(
+    return Scaffold(
+      body: isloading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
@@ -54,15 +54,18 @@ class _EmailSignUpState extends State<EmailSignUp> {
                 const SizedBox(height: 20),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Textinput(
+                  child: TextInput(
                       controller: emailController,
                       hintText: 'Enter Email Address'),
                 ),
                 const SizedBox(height: 20),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Textinput(
-                      controller: passController, hintText: 'Enter Password'),
+                  child: TextInput(
+                    controller: passController,
+                    hintText: 'Enter Password',
+                    isPassword: true,
+                  ),
                 ),
                 const Padding(
                   padding: EdgeInsets.all(32),
@@ -70,9 +73,9 @@ class _EmailSignUpState extends State<EmailSignUp> {
                     child: Text(
                       "--password must contain atleast one Uppercase,Lowercase,Number,Special Character amd minimum length of 8 ",
                       style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.amber),
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -87,6 +90,6 @@ class _EmailSignUpState extends State<EmailSignUp> {
                 ),
               ],
             ),
-          );
+    );
   }
 }

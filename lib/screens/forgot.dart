@@ -36,7 +36,7 @@ class _forgotState extends State<forgot> {
           const SizedBox(height: 20),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: Textinput(
+            child: TextInput(
                 controller: emailController, hintText: 'Enter Email Address'),
           ),
           const SizedBox(height: 20),

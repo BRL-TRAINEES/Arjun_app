@@ -44,7 +44,7 @@ class _PhonenumState extends State<Phonenum> {
         children: [
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: Textinput(
+            child: TextInput(
                 controller: phoneController, hintText: 'enter Mobile No.'),
           ),
           SizedBox(

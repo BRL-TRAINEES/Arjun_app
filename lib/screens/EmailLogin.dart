@@ -55,15 +55,18 @@ class _EmailSignInState extends State<EmailSignIn> {
                 const SizedBox(height: 20),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Textinput(
+                  child: TextInput(
                       controller: emailController,
                       hintText: 'Enter Email Address'),
                 ),
                 const SizedBox(height: 20),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Textinput(
-                      controller: passController, hintText: 'Enter Password'),
+                  child: TextInput(
+                    controller: passController,
+                    hintText: 'Enter Password',
+                    isPassword: true,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(

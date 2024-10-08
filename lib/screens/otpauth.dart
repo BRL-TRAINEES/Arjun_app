@@ -52,7 +52,7 @@ class _PhonenumState extends State<Otpauth> {
               ),
             ),
           ),
-          Textinput(
+          TextInput(
             controller: OTPController,
             hintText: 'Enter OTP sent',
           ),
