@@ -32,11 +32,10 @@ class _TextInputState extends State<TextInput> {
       obscureText: widget.isPassword && _isObscured,
       decoration: InputDecoration(
         hintText: widget.hintText,
-        hintStyle: TextStyle(color: Colors.grey[600]), // Hint text color
+        hintStyle: TextStyle(color: Colors.grey[600]),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12), // Rounded corners
-          borderSide: BorderSide(
-              color: Colors.blue, width: 2), // Border color and width
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: Colors.blue, width: 2),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -54,8 +53,8 @@ class _TextInputState extends State<TextInput> {
                 onPressed: _toggleVisibility,
               )
             : null,
-        contentPadding: const EdgeInsets.symmetric(
-            vertical: 15, horizontal: 20), // Padding inside the text field
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
       ),
     );
   }

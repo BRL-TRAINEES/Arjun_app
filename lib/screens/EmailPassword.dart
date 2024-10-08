@@ -1,4 +1,5 @@
 import 'package:arjun_app/screens/wrapper.dart';
+import 'package:arjun_app/widget/passcheck.dart';
 import 'package:arjun_app/widget/textinput.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,15 @@ class EmailSignUp extends StatefulWidget {
 class _EmailSignUpState extends State<EmailSignUp> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
+  String _strengthMessage = "";
   bool isloading = false;
+
+  void _onPasswordChanged(String password) {
+    setState(() {
+      _strengthMessage =
+          checkPasswordStrength(password); // Call the utility function
+    });
+  }
 
   signUp() async {
     setState(() {
