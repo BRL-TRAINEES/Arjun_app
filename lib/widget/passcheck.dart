@@ -6,8 +6,13 @@ String checkPasswordStrength(String password) {
   final hasDigits = password.contains(RegExp(r'[0-9]'));
   final hasSpecialCharacters =
       password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
+  final isLong = password.length >= 8;
 
-  if (hasUppercase && hasLowercase && hasDigits && hasSpecialCharacters) {
+  if (hasUppercase &&
+      hasLowercase &&
+      hasDigits &&
+      hasSpecialCharacters &&
+      isLong) {
     return "Strong password";
   } else {
     return "Weak password";

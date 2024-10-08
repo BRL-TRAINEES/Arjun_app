@@ -15,15 +15,8 @@ class EmailSignUp extends StatefulWidget {
 class _EmailSignUpState extends State<EmailSignUp> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
-  String _strengthMessage = "";
-  bool isloading = false;
 
-  void _onPasswordChanged(String password) {
-    setState(() {
-      _strengthMessage =
-          checkPasswordStrength(password); // Call the utility function
-    });
-  }
+  bool isloading = false;
 
   signUp() async {
     setState(() {
