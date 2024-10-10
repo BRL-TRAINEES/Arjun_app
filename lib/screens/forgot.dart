@@ -1,6 +1,7 @@
 import 'package:arjun_app/widget/textinput.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class forgot extends StatefulWidget {
   const forgot({super.key});
@@ -14,7 +15,17 @@ class _forgotState extends State<forgot> {
 
   reset() async {
     await FirebaseAuth.instance
-        .sendPasswordResetEmail(email: emailController.text);
+        .sendPasswordResetEmail(email: emailController.text)
+        .then((onValue) => {
+              Get.snackbar(
+                'verification link sent',
+                'check your mail',
+                margin: EdgeInsets.all(35),
+                backgroundColor: Colors.yellow,
+                snackPosition: SnackPosition.BOTTOM,
+              )
+            });
+    ;
   }
 
   @override
