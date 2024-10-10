@@ -27,14 +27,7 @@ class _LogInScreenState extends State<LogInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/1.jpg'),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: const Text("sign up / login Options "),
         ),
@@ -78,7 +71,7 @@ class _LogInScreenState extends State<LogInScreen> {
             ],
           ),
         )),
-      ),
+      
     );
   }
 }
