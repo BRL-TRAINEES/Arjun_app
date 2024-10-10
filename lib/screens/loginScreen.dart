@@ -1,6 +1,5 @@
 import 'package:arjun_app/screens/EmailLogin.dart';
 import 'package:arjun_app/screens/EmailPassword.dart';
-import 'package:arjun_app/screens/PhoneNum.dart';
 import 'package:arjun_app/screens/forgot.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -28,50 +27,58 @@ class _LogInScreenState extends State<LogInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("sign up / login Options "),
-      ),
-      body: SafeArea(
-          child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: (() => Get.to(EmailSignUp())),
-              child: const Text("Sign Up with Email"),
-            ),
-            SizedBox(
-              height: 35,
-            ),
-            ElevatedButton(
-              onPressed: (() => Get.to(EmailSignIn())),
-              child: const Text("Login with Email"),
-            ),
-            SizedBox(
-              height: 35,
-            ),
-            ElevatedButton(
-              onPressed: (() => Get.to(Phonenum())),
-              child: const Text("phone sign in"),
-            ),
-            SizedBox(
-              height: 35,
-            ),
-            ElevatedButton(
-              onPressed: (() => Get.to(forgot())),
-              child: const Text("Forgot Password"),
-            ),
-            SizedBox(
-              height: 35,
-            ),
-            ElevatedButton(
-              onPressed: (() => login()),
-              child: const Text("Sign In With Google"),
-            ),
-          ],
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/1.jpg'),
+          fit: BoxFit.cover,
         ),
-      )),
+      ),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("sign up / login Options "),
+        ),
+        body: SafeArea(
+            child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: (() => Get.to(EmailSignUp())),
+                child: const Text("Sign Up with Email"),
+              ),
+              SizedBox(
+                height: 35,
+              ),
+              ElevatedButton(
+                onPressed: (() => Get.to(EmailSignIn())),
+                child: const Text("Login with Email"),
+              ),
+              // SizedBox(
+              //   height: 35,
+              // ),
+              // ElevatedButton(
+              //   onPressed: (() => Get.to(Phonenum())),
+              //   child: const Text("phone sign in"),
+              // ),
+              SizedBox(
+                height: 35,
+              ),
+              ElevatedButton(
+                onPressed: (() => Get.to(forgot())),
+                child: const Text("Forgot Password"),
+              ),
+              SizedBox(
+                height: 35,
+              ),
+              ElevatedButton(
+                onPressed: (() => login()),
+                child: const Text("Sign In With Google"),
+              ),
+            ],
+          ),
+        )),
+      ),
     );
   }
 }

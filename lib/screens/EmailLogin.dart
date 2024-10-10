@@ -37,12 +37,12 @@ class _EmailSignInState extends State<EmailSignIn> {
 
   @override
   Widget build(BuildContext context) {
-    return isloading
-        ? Center(
-            child: CircularProgressIndicator(),
-          )
-        : Scaffold(
-            body: Column(
+    return Scaffold(
+      body: isloading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
@@ -80,6 +80,6 @@ class _EmailSignInState extends State<EmailSignIn> {
                 ),
               ],
             ),
-          );
+    );
   }
 }

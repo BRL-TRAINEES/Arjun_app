@@ -69,12 +69,12 @@ class _EmailSignUpState extends State<EmailSignUp> {
                   ),
                 ),
                 const Padding(
-                  padding: EdgeInsets.all(32),
+                  padding: EdgeInsets.all(25),
                   child: Center(
                     child: Text(
-                      "--password must contain atleast one Uppercase,Lowercase,Number,Special Character amd minimum length of 8 ",
+                      "--password must contain atleast one \nUppercase\nLowercase\nNumber\nSpecial Character\nminimum length of 8 ",
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

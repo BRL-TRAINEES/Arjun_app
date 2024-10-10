@@ -1,7 +1,7 @@
-import 'package:arjun_app/screens/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'EmailLogin.dart';
 
 class Verification extends StatefulWidget {
   const Verification({super.key});
@@ -33,7 +33,7 @@ class _VerificationState extends State<Verification> {
   reload() async {
     await FirebaseAuth.instance.currentUser!
         .reload()
-        .then((onValue) => {Get.offAll(Wrapper())});
+        .then((onValue) => {Get.offAll(EmailSignIn())});
   }
 
   @override
